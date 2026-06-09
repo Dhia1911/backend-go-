@@ -3,7 +3,8 @@ WORKDIR /app
 ENV PORT=8080
 EXPOSE $PORT
 COPY go.mod go.sum ./
-copy . .
+RUN go mod download
+COPY . .
 RUN go build -o app .
 FROM alpine:3.19
 WORKDIR /app
